@@ -1,0 +1,199 @@
+body {
+    margin: 0px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.background {
+    position: relative;
+    background-size: contain, cover;
+    width: 100%;
+    z-index: -1;
+
+}
+
+.background-container {
+    z-index: 10;
+    background-color: rgb(0,0,0, 0.5)
+}
+
+header {
+    overflow: hidden;
+    height: 750px;
+}
+
+
+
+h2 {
+    font-size: 40px;
+    font-family: 'Cinzel', serif;
+}
+
+h3 {
+    font-size: 30px;
+    font-family: 'Cinzel', serif;
+}
+
+main p {
+    font-family: 'Lato', serif;
+    font-size: 25px;
+}
+
+main { 
+    padding: 0px 15%;
+}
+
+.petpics {
+    display: flex;
+    justify-content:space-evenly
+}
+
+.petpics img{
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+}
+.petpics-adoption img {
+    height: 400px;
+    width: 400px;
+    border-radius: 50%;
+}
+
+.petpics-adoption {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.petpics-adoption .container-cat, .petpics-adoption .container-dog {
+    /* border: 0.3px solid rgb(63, 60, 60); */
+    /* box-shadow: 10px 10px 5px #aaaaaa; */
+    /* border-radius: 5px; */
+    background-color: white;
+    padding: 10px 20% 30px 20%;
+    font-family: 'Cinzel', serif;
+    font-size: 25px;
+    margin-bottom: 20px;
+    
+}
+
+.border {
+    height: 400px;
+    margin-bottom: 100px;
+}
+
+.start {
+    margin-top: 100px;
+}
+
+.container-cat, .container-dog {
+    position: relative;
+}
+
+hr {
+    border: none;
+    height:40px; 
+    background-image: url("./resources/paw.jpg"); 
+    background-size: contain;
+    margin: 50px -210px;
+
+}
+
+.overlay {
+    top: 0px;
+    background-color:  #d8e3db;
+    opacity: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.container-dog:hover .overlay, .container-cat:hover .overlay {
+    opacity: 0.5;
+    transition: 0.5s ease;
+}
+
+.container-dog:hover .o-text {
+    width: 100%;
+}
+
+.text {
+    position: absolute;
+    color: white;
+    font-size: 20px;    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.o-text {
+    top: 0px;
+    position: absolute;
+    height: 100%;
+    width: 0px;
+    border-radius: 50%;
+    transition: 0.5s ease;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+
+.navbar, .navbar-adoption { 
+    background-color: black;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-adoption {
+    justify-content: center;
+}
+
+.navbar .left, .navbar-adoption .left {
+    color: white;
+    font-family: 'Hachi Maru Pop', cursive;
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 35px;
+}
+
+.navbar .right { 
+    color: white;
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: white;
+}
+
+.pagelink {
+    font-size: 20px;
+    height: 100%;
+    display: inline-block;
+    padding: 35px 20px;
+}
+
+.pagelink:hover {
+    background-color: green;
+}
+
+.queue {
+    display: flex;
+    background-color:lightgrey;
+}
+
+.queue img {
+    height: 100px;
+}
+
+.pet-background {
+    background-color: rgb(237,236,236);
+    padding: 5% ;
+    /* border: 0.5px solid black; */
+    box-shadow: 10px 10px 5px #aaaaaa;
+}
