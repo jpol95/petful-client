@@ -44,6 +44,8 @@ export default class Adopt extends React.Component {
                 </div>
             </div>
         </div>
+        <button>Join the queue</button>
+        <div className="loader"></div>
     </div>
     }
 }
