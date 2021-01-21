@@ -1,9 +1,28 @@
 import React from 'react'
+import Home from './Home';
+import {Route, Link} from 'react-router-dom'
+import Adopt from './Adopt';
 
-function Root() {
-  return <div>
-    <h1>Petful</h1>
-  </div>
+function NavBarAdopt(props) {
+  return <div className="navbar-adoption">
+        <Link class="left" to="/"> Petful </Link>
+    </div>
 }
 
-export default Root
+
+
+
+export default class Root extends React.Component {
+
+  render() {
+    return (
+      <>
+      <main>
+        <Route path="/adoption-page" component={NavBarAdopt} />
+        <Route exact path="/" component={Home} />
+        <Route path="/adoption-page" component={Adopt} />
+      </main>
+    </>
+    )
+  }
+}

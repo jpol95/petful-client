@@ -1,16 +1,15 @@
 import React from 'react';
-
 import kitty from '../resources/kitty.jpg'
 import puppy from '../resources/puppy.jpg'
 
 export default class Adopt extends React.Component {
     render() {
-        return   <div id="adopt" class="adopt">
+        return  <div id="adopt" class="adopt">
         <h2> Meet the pets! </h2>
         <div class="petpics-adoption">
             <div class="container-cat">
                 <div class="pet-background">
-                    <img src={kitty} / >
+                    <img src={kitty} />
                     <p>Milo</p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                         ut labore et dolore magna aliqua. Volutpat sed cras ornare arcu dui vivamus arcu. Semper

@@ -1,10 +1,11 @@
 import React from 'react';
 import '../index.css';
+import houseIcon from '../resources/house_icon.PNG'
 
 export default class Mission extends React.Component {
     render() {
         return  <div id="mission" class="mission">
-        <img src="house_icon.PNG" />
+        <img src={houseIcon} />
         <h2>Our mission</h2>
         <p>Vestibulum lectus mauris ultrices eros. Mauris commodo quis imperdiet massa tincidunt.
             Libero volutpat sed cras ornare arcu dui vivamus. Erat imperdiet sed euismod nisi porta
