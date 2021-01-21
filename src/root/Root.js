@@ -4,13 +4,10 @@ import {Route, Link} from 'react-router-dom'
 import Adopt from './Adopt';
 
 function NavBarAdopt(props) {
-  return <div className="navbar-adoption">
+  return <div id="navbar-adoption" className="navbar-adoption">
         <Link class="left" to="/"> Petful </Link>
     </div>
 }
-
-
-
 
 export default class Root extends React.Component {
 

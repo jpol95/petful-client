@@ -7,7 +7,7 @@ export default class Adopt extends React.Component {
         return  <div id="adopt" class="adopt">
         <h2> Meet the pets! </h2>
         <div class="petpics-adoption">
-            <div class="container-cat">
+            <div id="container-cat" class="container-cat">
                 <div class="pet-background">
                     <img src={kitty} />
                     <p>Milo</p>
@@ -25,7 +25,7 @@ export default class Adopt extends React.Component {
                         tincidunt eget nullam non nisi est.</p>
                 </div>
             </div>
-            <div class="container-dog">
+            <div id="container-dog" class="container-dog">
                 <div class="pet-background">
                     <img src={puppy} />
                     <p>Bubbles</p>
