@@ -55,7 +55,9 @@ export default class Adopt extends React.Component {
       await FetchService[`dq${animal}`]();
       const animalFetched = await FetchService[`get${animal}`]();
       this.setState({ [`animation${animal}`]: "fade-out", animatePerson: "slide-left", fadePerson:"fade-person" });
+      console.log("line58");
       await new Promise(r => setTimeout(() => {this.setState({ [animalLC]: animalFetched }); r()}, 800));
+      await new Promise(r => setTimeout(r, 151));
       await FetchService.dqPerson();
       let peopleList = await FetchService.getPeople();
       this.setState({ peopleList });
