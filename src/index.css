@@ -79,6 +79,7 @@ main p {
     font-family: 'Cinzel', serif;
     font-size: 25px;
     margin-bottom: 20px;
+    flex: 1;
     
 }
 
@@ -241,4 +242,20 @@ a:visited {
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+  }
+
+  .fade-out {
+    animation: fadeOut ease 1s;
+  }
+  @keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+
+  .hidden {
+      display: none;
   }
