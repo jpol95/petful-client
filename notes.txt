@@ -1,0 +1,1 @@
+when clicking to get in line, do transition to line part by a slower reveal so that it looks smoother
