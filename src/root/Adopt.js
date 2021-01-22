@@ -13,10 +13,18 @@ export default class Adopt extends React.Component {
         animationCat: ""
       }
       startAdoption = async () => {
-        await FetchService.dqCat()
-        const cat = await FetchService.getCat();
-        this.setState({animationCat: "fade-out"})
-        setTimeout(() => this.setState({cat}), 1000)
+        const peopleList = await FetchService.getPeople();
+        for (let i = 0; i < peopleList.length; i++){
+        const animal = Math.round(Math.random()) === 1 ? "Cat" : "Dog";
+        const animalLC = animal === "Cat" ? "cat" : "dog"; 
+        await new Promise(r => r(this.setState({[`animation${animal}`]: ""})));
+        await FetchService[`dq${animal}`]();
+        const animalFetched = await FetchService[`get${animal}`]();
+        this.setState({[`animation${animal}`]: "fade-out"});
+        setTimeout(() => this.setState({[animalLC]: animalFetched}), 800);
+        await new Promise(r => setTimeout(r, 2000));
+        }
+
       }
 
       componentDidMount() {
@@ -31,8 +39,6 @@ export default class Adopt extends React.Component {
   render() {
       const cat = this.state.cat;
       const dog = this.state.dog;
-      console.log(this.state.animation)
-      console.log(this.state.cat)
     return (
       <div id="adopt" class="adopt">
         <h2> Meet the pets! </h2>

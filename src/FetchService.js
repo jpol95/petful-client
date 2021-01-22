@@ -11,7 +11,7 @@ const FetchService = {
         return fetch(`${SERVER_URL}/people`, {method: 'POST', headers: {"content-type": "application/json"}, body: JSON.stringify(person)}).then(person => person.json())
     }, 
     getPeople(){
-        return fetch(`${SERVER_URL}/people`)
+        return fetch(`${SERVER_URL}/people`).then(people => people.json())
     }, 
     dqCat(){
         return fetch(`${SERVER_URL}/cats`, {method: 'DELETE', headers: {"content-type": "application/json"}})
