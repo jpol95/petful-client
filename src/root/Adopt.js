@@ -12,6 +12,7 @@ export default class Adopt extends React.Component {
     animationCat: "",
     animationPerson: "",
     peopleList: [],
+    fadePerson: ""
   };
 
 
@@ -19,9 +20,8 @@ export default class Adopt extends React.Component {
   renderPeople() {
     let result = [];
     for (let i = 0; i < this.state.peopleList.length; i++) {
-        const animate = i === 0 ? "fade-out" : "";
       result.push(
-        <div id={`person-${i}`} className={`person-container ${this.state.animatePerson} ${animate}`}>
+        <div id={`${i === 0 ? this.state.fadePerson : `person${i}`}`} className={`person-container ${this.state.animatePerson}`}>
           {this.state.peopleList[i].split(" ").map(line => <div>{line}</div>)}
           <img  key={i} class="person" src={person} />
         </div>
@@ -50,11 +50,11 @@ export default class Adopt extends React.Component {
       const animal = Math.round(Math.random()) === 1 ? "Cat" : "Dog";
       const animalLC = animal === "Cat" ? "cat" : "dog";
       await new Promise((r) =>
-        r(this.setState({ [`animation${animal}`]: "", animatePerson: "" }))
+        r(this.setState({ [`animation${animal}`]: "", animatePerson: "", fadePerson: "" }))
       );
       await FetchService[`dq${animal}`]();
       const animalFetched = await FetchService[`get${animal}`]();
-      this.setState({ [`animation${animal}`]: "fade-out", animatePerson: "slide-left" });
+      this.setState({ [`animation${animal}`]: "fade-out", animatePerson: "slide-left", fadePerson:"fade-person" });
       await new Promise(r => setTimeout(() => {this.setState({ [animalLC]: animalFetched }); r()}, 800));
       await FetchService.dqPerson();
       let peopleList = await FetchService.getPeople();
