@@ -18,7 +18,10 @@ const FetchService = {
     }, 
     dqDog(){
         return fetch(`${SERVER_URL}/dogs`, {method: 'DELETE', headers: {"content-type": "application/json"}}) 
-    }  
+    }, 
+    dqPerson(){
+        return fetch(`${SERVER_URL}/people`, {method: 'DELETE', headers: {"content-type": "application/json"}})
+    }
 }
 
 export default FetchService;

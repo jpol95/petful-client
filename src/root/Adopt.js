@@ -1,5 +1,7 @@
 import React from "react";
 import FetchService from "../FetchService";
+import person from "../resources/person-icon.png";
+import greenPerson from "../resources/greenperson (2).png";
 
 export default class Adopt extends React.Component {
   state = {
@@ -8,9 +10,39 @@ export default class Adopt extends React.Component {
     dog: {},
     animationDog: "",
     animationCat: "",
+    peopleList: [],
   };
+
+
+  //FIGURE OUT HOW TO DISPLAY GREEN PERSON CORRECTLY, THEN CONTINUE WITH QUEUE ANIMATION
+  renderPeople() {
+    let result = [];
+    for (let i = 0; i < this.state.peopleList.length; i++) {
+      result.push(
+        <div id={`person-${i}`} className="person-container">
+          {this.state.peopleList[i].split(" ").map(line => <div>{line}</div>)}
+          <img  key={i} class="person" src={person} />
+        </div>
+      );
+    }
+    if (this.state.peopleList.length)
+      result.push(
+        <div id="self" className="person-container">
+            <div>John</div>
+            <div>Jacobs</div>
+        <img
+          key={this.state.peopleList.length}
+          class="person"
+          src={greenPerson}
+        />
+         </div>
+      );
+    return result;
+  }
+
   startAdoption = async () => {
-    const peopleList = await FetchService.getPeople();
+    let peopleList = await FetchService.getPeople();
+    this.setState({ peopleList });
     for (let i = 0; i < peopleList.length; i++) {
       const animal = Math.round(Math.random()) === 1 ? "Cat" : "Dog";
       const animalLC = animal === "Cat" ? "cat" : "dog";
@@ -21,6 +53,10 @@ export default class Adopt extends React.Component {
       const animalFetched = await FetchService[`get${animal}`]();
       this.setState({ [`animation${animal}`]: "fade-out" });
       setTimeout(() => this.setState({ [animalLC]: animalFetched }), 800);
+      await FetchService.dqPerson();
+      let peopleList = await FetchService.getPeople();
+      this.setState({ peopleList });
+      console.log(peopleList);
       await new Promise((r) => setTimeout(r, 2000));
     }
   };
@@ -43,7 +79,9 @@ export default class Adopt extends React.Component {
     const dog = this.state.dog;
     return (
       <div id="adopt" class="adopt">
-        <h2> Meet the pets! </h2>
+        <button onClick={this.startAdoption}> Adopt a pet! </button>
+        <div className="loader hidden"></div>
+        <div class="queue">{this.renderPeople()}</div>
         <div class="petpics-adoption">
           <div
             id="container-cat"
@@ -92,8 +130,7 @@ export default class Adopt extends React.Component {
             </div>
           </div>
         </div>
-        <button onClick={this.startAdoption}>Join the queue</button>
-        <div className="loader hidden"></div>
+        {/* <button onClick={this.startAdoption}>Join the queue</button> */}
       </div>
     );
   }
