@@ -249,7 +249,7 @@ a:visited {
     100% { transform: rotate(360deg); }
   }
 
-  .fade-out, #person-0 {
+  .fade-out{
     animation: fadeOut ease 1s;
   }
   @keyframes fadeOut {

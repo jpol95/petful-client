@@ -15,12 +15,13 @@ export default class Adopt extends React.Component {
   };
 
 
-  //FIGURE OUT HOW TO DISPLAY GREEN PERSON CORRECTLY, THEN CONTINUE WITH QUEUE ANIMATION
+  //FIGURE OUT HOW TO GET FIRST PERSON TO FADE OUT
   renderPeople() {
     let result = [];
     for (let i = 0; i < this.state.peopleList.length; i++) {
+        const animate = i === 0 ? "fade-out" : "";
       result.push(
-        <div id={`person-${i}`} className={`person-container ${this.state.animatePerson}`}>
+        <div id={`person-${i}`} className={`person-container ${this.state.animatePerson} ${animate}`}>
           {this.state.peopleList[i].split(" ").map(line => <div>{line}</div>)}
           <img  key={i} class="person" src={person} />
         </div>
