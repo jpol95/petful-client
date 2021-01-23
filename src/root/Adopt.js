@@ -12,14 +12,15 @@ export default class Adopt extends React.Component {
     animationCat: "",
     animationPerson: "",
     peopleList: [],
-    fadePerson: ""
+    fadePerson: "", 
+    name: {value: "", touched: false, disabled: false}
   };
 
 
   //FIGURE OUT HOW TO GET FIRST PERSON TO FADE OUT
-  renderPeople() {
+   renderPeople() {
     let result = [];
-    for (let i = 0; i < this.state.peopleList.length; i++) {
+    for (let i = 0; i < this.state.peopleList.length - 1; i++) {
       result.push(
         <div id={`${i === 0 ? this.state.fadePerson : `person${i}`}`} className={`person-container ${this.state.animatePerson}`}>
           {this.state.peopleList[i].split(" ").map(line => <div>{line}</div>)}
@@ -29,9 +30,9 @@ export default class Adopt extends React.Component {
     }
     if (this.state.peopleList.length)
       result.push(
-        <div id="self" className={`person-container ${this.state.animatePerson}`}>
-            <div>John</div>
-            <div>Jacobs</div>
+        <div id="self" className={`person-container ${this.state.peopleList.length !== 1 ? this.state.animatePerson : ""}`}>
+            <div>{this.state.name.value.split(" ")[0]}</div>
+            <div>{this.state.name.value.split(" ")[1]}</div>
         <img
           key={this.state.peopleList.length}
           class="person"
@@ -43,10 +44,11 @@ export default class Adopt extends React.Component {
   }
 
   startAdoption = async () => {
+      await FetchService.postPerson({name: this.state.name.value})
     let peopleList = await FetchService.getPeople();
     let length = peopleList.length;
-    this.setState({ peopleList });
-    for (let i = 0; i < length; i++) {
+    this.setState({ peopleList, name: {value: this.state.name.value, touched: false, disabled: true} });
+    for (let i = 0; i < length - 1; i++) {
       const animal = Math.round(Math.random()) === 1 ? "Cat" : "Dog";
       const animalLC = animal === "Cat" ? "cat" : "dog";
       await new Promise((r) =>
@@ -56,7 +58,7 @@ export default class Adopt extends React.Component {
       const animalFetched = await FetchService[`get${animal}`]();
       this.setState({ [`animation${animal}`]: "fade-out", animatePerson: "slide-left", fadePerson:"fade-person" });
       console.log("line58");
-      await new Promise(r => setTimeout(() => {this.setState({ [animalLC]: animalFetched }); r()}, 800));
+      await new Promise(r => setTimeout(() => r(this.setState({ [animalLC]: animalFetched })), 800));
       await new Promise(r => setTimeout(r, 151));
       await FetchService.dqPerson();
       let peopleList = await FetchService.getPeople();
@@ -78,12 +80,25 @@ export default class Adopt extends React.Component {
     );
   }
 
+
+  handleNameChange = (e) => {
+    this.setState({name: {value: e.target.value, touched: true}});
+  }
+
+  invalidName = (name) => {
+      console.log(name.split(" ").length)
+      if (!name.match(/[A-Za-z]+\s[A-Za-z]+/)) return "Please enter your first and last name"
+  }
+
   render() {
     const cat = this.state.cat;
     const dog = this.state.dog;
+    console.log(this.renderPeople())
     return (
       <div id="adopt" class="adopt">
-        <button onClick={this.startAdoption}> Adopt a pet! </button>
+        <button class="adopt-button" disabled={this.invalidName(this.state.name.value)} onClick={this.startAdoption}> Adopt a pet! </button>
+        {(this.invalidName(this.state.name.value) && this.state.name.touched) && <div class="error">{this.invalidName(this.state.name.value)}</div>}
+        <input disabled={this.state.disabled} onChange={this.handleNameChange} className="adopter" placeholder="Enter your name..."/>
         <div className="loader hidden"></div>
         <div class="queue">{this.renderPeople()}</div>
         <div class="petpics-adoption">

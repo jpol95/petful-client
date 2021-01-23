@@ -283,7 +283,33 @@ a:visited {
     }
 }
 
+.adopt-button:disabled {
+    color: grey;
+}
+
+.adopt-button:disabled:hover{
+    background-color: white;
+    color: grey;
+    cursor: default;
+}
+
+
+
+.error {
+    color: red;
+}
+
 
 #self{
     margin-left: 25px;
+}
+
+.adopter {
+    display: block;
+    margin: auto;
+    width: 34%;
+    border: 2px solid black;
+    border-radius: 0px;
+    height: 1em;
+    font-size: 2em;
 }
