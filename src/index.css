@@ -264,7 +264,7 @@ a:visited {
   }
 
   .hidden {
-      display: none;
+      display: none !important;
   }
 
 

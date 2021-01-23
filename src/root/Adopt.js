@@ -13,34 +13,46 @@ export default class Adopt extends React.Component {
     animationPerson: "",
     peopleList: [],
     fadePerson: "", 
-    name: {value: "", touched: false, disabled: false}
+    name: {value: "", touched: false, disabled: false}, 
   };
 
 
   //FIGURE OUT HOW TO GET FIRST PERSON TO FADE OUT
    renderPeople() {
     let result = [];
-    for (let i = 0; i < this.state.peopleList.length - 1; i++) {
+    for (let i = 0; i < this.state.peopleList.length; i++) {
       result.push(
-        <div id={`${i === 0 ? this.state.fadePerson : `person${i}`}`} className={`person-container ${this.state.animatePerson}`}>
+        <div id={`${i === 0 ? this.state.fadePerson : `person${i}`}`} className={`person-container ${ this.state.peopleList[0] !== this.state.name.value? this.state.animatePerson: ""}`}>
           {this.state.peopleList[i].split(" ").map(line => <div>{line}</div>)}
-          <img  key={i} class="person" src={person} />
+          <img  key={i} class="person" src={ this.state.peopleList[i] === this.state.name.value ? greenPerson: person} />
         </div>
       );
     }
-    if (this.state.peopleList.length)
-      result.push(
-        <div id="self" className={`person-container ${this.state.peopleList.length !== 1 ? this.state.animatePerson : ""}`}>
-            <div>{this.state.name.value.split(" ")[0]}</div>
-            <div>{this.state.name.value.split(" ")[1]}</div>
-        <img
-          key={this.state.peopleList.length}
-          class="person"
-          src={greenPerson}
-        />
-         </div>
-      );
+    // if (this.state.peopleList.length && this.state.peopleList[0] !== this.state.name.value)
+    //   result.push(
+    //     <div id="self" className={`person-container ${this.state.peopleList.length !== 1 ? this.state.animatePerson : ""}`}>
+    //         <div>{this.state.name.value.split(" ")[0]}</div>
+    //         <div>{this.state.name.value.split(" ")[1]}</div>
+    //     <img
+    //       key={this.state.peopleList.length}
+    //       class="person"
+    //       src={greenPerson}
+    //     />
+    //      </div>
+    //   );
     return result;
+  }
+
+  //FINISH THIS PART WHERE YOU'RE POPULATING THE PEOPLE
+  async populateBack() {
+      this.setState({animatePerson: "", fadePerson: ""})
+      const names = ["Johnson McGee", "Brady Stuffins", "Brohnson Flostrom", "Braullins McCullin", "Foster Balcon", "Borderlin Pronc"];
+      for (let i  = 0; i < 6; i++){
+        await FetchService.postPerson({name: names[i]});
+        const peopleList = await FetchService.getPeople();
+        this.setState({peopleList})
+        await new Promise((r) => setTimeout(r, 2000));
+      }
   }
 
   startAdoption = async () => {
@@ -65,7 +77,11 @@ export default class Adopt extends React.Component {
       this.setState({ peopleList });
       await new Promise((r) => setTimeout(r, 2000));
     }
+    await new Promise((r) => setTimeout(r, 2000));
+    this.populateBack();
   };
+
+
 
   componentDidMount() {
     FetchService.getCat().then((cat) =>
@@ -93,12 +109,12 @@ export default class Adopt extends React.Component {
   render() {
     const cat = this.state.cat;
     const dog = this.state.dog;
-    console.log(this.renderPeople())
+    console.log(this.state);
     return (
       <div id="adopt" class="adopt">
-        <button class="adopt-button" disabled={this.invalidName(this.state.name.value)} onClick={this.startAdoption}> Adopt a pet! </button>
+        <button class="adopt-button" disabled={this.invalidName(this.state.name.value) || this.state.name.disabled} onClick={this.startAdoption}> Adopt a pet! </button>
         {(this.invalidName(this.state.name.value) && this.state.name.touched) && <div class="error">{this.invalidName(this.state.name.value)}</div>}
-        <input disabled={this.state.disabled} onChange={this.handleNameChange} className="adopter" placeholder="Enter your name..."/>
+        <input  onChange={this.handleNameChange} className={`adopter ${this.state.name.disabled ? "hidden" : ""}`} placeholder="Enter your name..."/>
         <div className="loader hidden"></div>
         <div class="queue">{this.renderPeople()}</div>
         <div class="petpics-adoption">
