@@ -1,4 +1,4 @@
-Link to live app: https://petful-client-template.jpol95.vercel.app/
+Link to live app: https://petful-client-template.jpol95.vercel.app/ <br />
 Link to server repo: https://github.com/jpol95/petful-server
 
 Welcome to petful! This is a website where you can step in line to adopt a cat, dog, or both. The client was built with ReactJS, HTML, CSS, and Javascript and is hosted on vercel. On the backend, Node and Express are used to manage the queue of both users and pets.
