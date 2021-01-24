@@ -110,9 +110,9 @@ export default class Adopt extends React.Component {
         <div className="buttons">
           <div className="one-buttons">
               <button onClick={() => this.setState({adopted: "cat"})} className="adopt-animal">Adopt Cat</button>
-              <button onClick={() => this.setState({adopted: "dog"})} className="adopt-animal">Adopt Dog</button>
-          </div>  
-          <button onClick={() => this.setState({adopted: "both"})} className="adopt-both">Adopt Both</button>
+              <button onClick={() => this.setState({adopted: "dog"})} className="adopt-animal">Adopt Dog</button> 
+              <button onClick={() => this.setState({adopted: "both"})} className="adopt-both">Adopt Both</button>
+          </div> 
         </div>}
         <br />
         <label className={`name-label ${this.state.name.disabled ? "hidden" : ""}`} for="enter-name">Name: </label>
