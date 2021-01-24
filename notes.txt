@@ -3,5 +3,5 @@ maybe a little tool tip that says "you are here"
 auto scrolling to the animation
 fix scroll when you go to adoption page
 lil loader
-input box
-load more people
+remember to fix errors or warnings on console
+make it mobile friendly

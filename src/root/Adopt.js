@@ -14,6 +14,8 @@ export default class Adopt extends React.Component {
     peopleList: [],
     fadePerson: "", 
     name: {value: "", touched: false, disabled: false}, 
+    front: false, 
+    adopted: ""
   };
 
 
@@ -28,18 +30,6 @@ export default class Adopt extends React.Component {
         </div>
       );
     }
-    // if (this.state.peopleList.length && this.state.peopleList[0] !== this.state.name.value)
-    //   result.push(
-    //     <div id="self" className={`person-container ${this.state.peopleList.length !== 1 ? this.state.animatePerson : ""}`}>
-    //         <div>{this.state.name.value.split(" ")[0]}</div>
-    //         <div>{this.state.name.value.split(" ")[1]}</div>
-    //     <img
-    //       key={this.state.peopleList.length}
-    //       class="person"
-    //       src={greenPerson}
-    //     />
-    //      </div>
-    //   );
     return result;
   }
 
@@ -74,7 +64,7 @@ export default class Adopt extends React.Component {
       await new Promise(r => setTimeout(r, 151));
       await FetchService.dqPerson();
       let peopleList = await FetchService.getPeople();
-      this.setState({ peopleList });
+      this.setState({ peopleList, front: i === length - 2 });
       await new Promise((r) => setTimeout(r, 2000));
     }
     await new Promise((r) => setTimeout(r, 2000));
@@ -106,19 +96,31 @@ export default class Adopt extends React.Component {
       if (!name.match(/[A-Za-z]+\s[A-Za-z]+/)) return "Please enter your first and last name"
   }
 
+
   render() {
     const cat = this.state.cat;
     const dog = this.state.dog;
     console.log(this.state);
     return (
       <div id="adopt" class="adopt">
+        {this.state.adopted && <div className="post-adopt"> Congratulations! Your adoption has been processed. Meet your pets!</div>} 
+        {!this.state.adopted && <div className="pre-adopt">
         <button class="adopt-button" disabled={this.invalidName(this.state.name.value) || this.state.name.disabled} onClick={this.startAdoption}> Adopt a pet! </button>
         {(this.invalidName(this.state.name.value) && this.state.name.touched) && <div class="error">{this.invalidName(this.state.name.value)}</div>}
+        {this.state.front && 
+        <div class="buttons">
+          <div class="one-buttons">
+              <button onClick={() => this.setState({adopted: "cat"})} class="adopt-animal">Adopt Cat</button>
+              <button onClick={() => this.setState({adopted: "dog"})} class="adopt-animal">Adopt Dog</button>
+          </div>  
+          <button onClick={() => this.setState({adopted: "dog"})} class="adopt-both">Adopt Both</button>
+        </div>}
         <input  onChange={this.handleNameChange} className={`adopter ${this.state.name.disabled ? "hidden" : ""}`} placeholder="Enter your name..."/>
         <div className="loader hidden"></div>
         <div class="queue">{this.renderPeople()}</div>
+        </div>}
         <div class="petpics-adoption">
-          <div
+         {this.state.adopted !== "dog" && <div
             id="container-cat"
             className={`container-dog ${this.state.animationCat}`}
           >
@@ -140,8 +142,8 @@ export default class Adopt extends React.Component {
                 <b> Reason {cat.name}'s at shelter'</b>: {cat.story}
               </p>
             </div>
-          </div>
-          <div
+          </div>}
+          {this.state.adopted !== "cat" && <div
             id="container-dog"
             className={`container-dog ${this.state.animationDog}`}
           >
@@ -163,7 +165,7 @@ export default class Adopt extends React.Component {
                 <b> Reason {dog.name}'s at shelter</b>: {dog.story}
               </p>
             </div>
-          </div>
+          </div>}
         </div>
         {/* <button onClick={this.startAdoption}>Join the queue</button> */}
       </div>

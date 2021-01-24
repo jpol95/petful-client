@@ -4,16 +4,14 @@ export default class Start extends React.Component {
     render() {
         return <div id="start" class="start">
         <h2>Help a young pup or kitty find a home</h2>
-            <p> Quis enim lobortis scelerisque fermentum dui. Nunc non blandit massa enim nec dui nunc. Felis
-                eget velit aliquet sagittis id consectetur purus ut. Eget magna fermentum iaculis eu. Eu sem
-                integer vitae justo eget magna fermentum iaculis. Nibh tellus molestie nunc non blandit. Elementum
-                pulvinar etiam non quam lacus suspendisse faucibus. Blandit aliquam etiam erat velit. Viverra
-                suspendisse potenti nullam ac tortor. Fringilla urna porttitor rhoncus dolor purus non enim. Elit
-                pellentesque habitant morbi tristique senectus et netus et. A lacus vestibulum sed arcu non. Massa
-                tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada. Lectus mauris ultrices eros in cursus
-                turpis massa tincidunt dui. Egestas diam in arcu cursus euismod quis. Aliquam nulla facilisi cras
-                fermentum. Morbi quis commodo odio aenean. Porttitor leo a diam sollicitudin. Ultricies lacus sed turpis
-                tincidunt id aliquet risus feugiat in.</p>
+            <p> If you like what you see, please follow the link in the navbar and start the adoption process today! Once you
+                go to the adoption page, you'll be able to see both the cat and the dog that are currently up for adoption. You can 
+                then enter your name and click to join the line. You'll be able to see on screen, in real time, where you are 
+                in the queue and when you've reached the front. Once you've reached the front, you'll be able to click to adopt
+                either the cat, the dog or both. Once you click, you'll receive a confirmation that you have adopted the animal you
+                intended to adopt. We appreciate your support, and if you like what you see, you're free to venmo Jesse Pollack a
+                $400 donation to keep the shelter going. 
+            </p>
         </div>
     }
 }

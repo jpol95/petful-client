@@ -7,25 +7,15 @@ export default class Mission extends React.Component {
         return  <div id="mission" class="mission">
         <img src={houseIcon} />
         <h2>Our mission</h2>
-        <p>Vestibulum lectus mauris ultrices eros. Mauris commodo quis imperdiet massa tincidunt.
-            Libero volutpat sed cras ornare arcu dui vivamus. Erat imperdiet sed euismod nisi porta
-            lorem mollis aliquam. Neque volutpat ac tincidunt vitae semper quis lectus. Tristique risus
-            nec feugiat in. Aliquet eget sit amet tellus. Id diam maecenas ultricies mi eget mauris.
-            Enim tortor at auctor urna nunc id cursus metus aliquam. Quam vulputate dignissim suspendisse
-            in est ante in. Viverra maecenas accumsan lacus vel facilisis volutpat est velit egestas.
-            Auctor elit sed vulputate mi sit amet mauris commodo. Sodales neque sodales ut etiam sit amet.
-            Sodales neque sodales ut etiam sit.
+        <p>Welcome to the Petful adoption center. Here at Petful, we take pride in providing to every pet a happy and healthy home. 
+            Petful was started as a simply company out of Jesse Pollack's garage back in 2004 in the Bush Administration. Jesse Pollack
+            envisioned a beautiful ecosystem of pets interacting, socializing, and ultimately finding homes in a humane, safe, cage-free way. 
+            Cage free did you say? That's right. We pride ourselves on keeping the pups in rooms with eachother to encourage both 
+            socialization with humans and pups alike. We also have the first on-site waterpark and rollercoaster for dogs. Yes sir, 
+            our pups enjoy a thrilling and safe way to let off some steam in Puppinator 4000. 
 
-            Quis enim lobortis scelerisque fermentum dui. Nunc non blandit massa enim nec dui nunc. Felis
-            eget velit aliquet sagittis id consectetur purus ut. Eget magna fermentum iaculis eu. Eu sem
-            integer vitae justo eget magna fermentum iaculis. Nibh tellus molestie nunc non blandit. Elementum
-            pulvinar etiam non quam lacus suspendisse faucibus. Blandit aliquam etiam erat velit. Viverra
-            suspendisse potenti nullam ac tortor. Fringilla urna porttitor rhoncus dolor purus non enim. Elit
-            pellentesque habitant morbi tristique senectus et netus et. A lacus vestibulum sed arcu non. Massa
-            tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada. Lectus mauris ultrices eros in cursus
-            turpis massa tincidunt dui. Egestas diam in arcu cursus euismod quis. Aliquam nulla facilisi cras
-            fermentum. Morbi quis commodo odio aenean. Porttitor leo a diam sollicitudin. Ultricies lacus sed turpis
-            tincidunt id aliquet risus feugiat in.
+            But let's not forget our lovely cats! Each cat is fixed upon adoption and fully vaccinated. We offer supreme tempurpedic
+            mattresses for each cat to sleep on because you know they can be divas sometimes! 
         </p>
     </div>
     }
