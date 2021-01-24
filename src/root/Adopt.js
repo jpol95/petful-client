@@ -26,7 +26,7 @@ export default class Adopt extends React.Component {
       result.push(
         <div id={`${i === 0 ? this.state.fadePerson : `person${i}`}`} className={`person-container ${ this.state.peopleList[0] !== this.state.name.value? this.state.animatePerson: ""}`}>
           {this.state.peopleList[i].split(" ").map(line => <div>{line}</div>)}
-          <img  key={i} class="person" src={ this.state.peopleList[i] === this.state.name.value ? greenPerson: person} />
+          <img alt="person icon" key={i} className="person" src={ this.state.peopleList[i] === this.state.name.value ? greenPerson: person} />
         </div>
       );
     }
@@ -41,7 +41,7 @@ export default class Adopt extends React.Component {
         await FetchService.postPerson({name: names[i]});
         const peopleList = await FetchService.getPeople();
         this.setState({peopleList})
-        await new Promise((r) => setTimeout(r, 2000));
+        await new Promise((r) => setTimeout(r, 5000));
       }
   }
 
@@ -61,13 +61,12 @@ export default class Adopt extends React.Component {
       this.setState({ [`animation${animal}`]: "fade-out", animatePerson: "slide-left", fadePerson:"fade-person" });
       console.log("line58");
       await new Promise(r => setTimeout(() => r(this.setState({ [animalLC]: animalFetched })), 800));
-      await new Promise(r => setTimeout(r, 151));
       await FetchService.dqPerson();
       let peopleList = await FetchService.getPeople();
       this.setState({ peopleList, front: i === length - 2 });
-      await new Promise((r) => setTimeout(r, 2000));
+      await new Promise((r) => setTimeout(r, 5000));
     }
-    await new Promise((r) => setTimeout(r, 2000));
+    await new Promise((r) => setTimeout(r, 5000));
     this.populateBack();
   };
 
@@ -102,30 +101,32 @@ export default class Adopt extends React.Component {
     const dog = this.state.dog;
     console.log(this.state);
     return (
-      <div id="adopt" class="adopt">
+      <div id="adopt" className="adopt">
         {this.state.adopted && <div className="post-adopt"> Congratulations! Your adoption has been processed. Meet your pets!</div>} 
         {!this.state.adopted && <div className="pre-adopt">
-        <button class="adopt-button" disabled={this.invalidName(this.state.name.value) || this.state.name.disabled} onClick={this.startAdoption}> Adopt a pet! </button>
-        {(this.invalidName(this.state.name.value) && this.state.name.touched) && <div class="error">{this.invalidName(this.state.name.value)}</div>}
+        <button className="adopt-button" disabled={this.invalidName(this.state.name.value) || this.state.name.disabled} onClick={this.startAdoption}> Adopt a pet! </button>
+        {(this.invalidName(this.state.name.value) && this.state.name.touched) && <div className="error">{this.invalidName(this.state.name.value)}</div>}
         {this.state.front && 
-        <div class="buttons">
-          <div class="one-buttons">
-              <button onClick={() => this.setState({adopted: "cat"})} class="adopt-animal">Adopt Cat</button>
-              <button onClick={() => this.setState({adopted: "dog"})} class="adopt-animal">Adopt Dog</button>
+        <div className="buttons">
+          <div className="one-buttons">
+              <button onClick={() => this.setState({adopted: "cat"})} className="adopt-animal">Adopt Cat</button>
+              <button onClick={() => this.setState({adopted: "dog"})} className="adopt-animal">Adopt Dog</button>
           </div>  
-          <button onClick={() => this.setState({adopted: "dog"})} class="adopt-both">Adopt Both</button>
+          <button onClick={() => this.setState({adopted: "both"})} className="adopt-both">Adopt Both</button>
         </div>}
-        <input  onChange={this.handleNameChange} className={`adopter ${this.state.name.disabled ? "hidden" : ""}`} placeholder="Enter your name..."/>
+        <br />
+        <label className={`name-label ${this.state.name.disabled ? "hidden" : ""}`} for="enter-name">Name: </label>
+        <input id="enter-name" onChange={this.handleNameChange} className={`adopter ${this.state.name.disabled ? "hidden" : ""}`} placeholder="Enter your name..." />
         <div className="loader hidden"></div>
-        <div class="queue">{this.renderPeople()}</div>
+        <div className="queue">{this.renderPeople()}</div>
         </div>}
-        <div class="petpics-adoption">
+        <div className="petpics-adoption">
          {this.state.adopted !== "dog" && <div
             id="container-cat"
             className={`container-dog ${this.state.animationCat}`}
           >
-            <div class="pet-background">
-              <img src={cat.imageURL} />
+            <div className="pet-background">
+              <img alt="cat image" src={cat.imageURL} />
               <p className="pet-name">
                 {cat.name ? cat.name.toUpperCase() : ""}
               </p>
@@ -147,8 +148,8 @@ export default class Adopt extends React.Component {
             id="container-dog"
             className={`container-dog ${this.state.animationDog}`}
           >
-            <div class="pet-background">
-              <img src={dog.imageURL} />
+            <div className="pet-background">
+              <img alt="dog image" src={dog.imageURL} />
               <p className="pet-name">
                 {dog.name ? dog.name.toUpperCase() : ""}
               </p>

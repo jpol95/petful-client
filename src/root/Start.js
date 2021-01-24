@@ -2,7 +2,7 @@ import React from 'react';
 
 export default class Start extends React.Component {
     render() {
-        return <div id="start" class="start">
+        return <div id="start" className="start">
         <h2>Help a young pup or kitty find a home</h2>
             <p> If you like what you see, please follow the link in the navbar and start the adoption process today! Once you
                 go to the adoption page, you'll be able to see both the cat and the dog that are currently up for adoption. You can 

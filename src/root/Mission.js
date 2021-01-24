@@ -4,8 +4,8 @@ import houseIcon from '../resources/house_icon.PNG'
 
 export default class Mission extends React.Component {
     render() {
-        return  <div id="mission" class="mission">
-        <img src={houseIcon} />
+        return  <div id="mission" className="mission">
+        <img alt="house icon" src={houseIcon} />
         <h2>Our mission</h2>
         <p>Welcome to the Petful adoption center. Here at Petful, we take pride in providing to every pet a happy and healthy home. 
             Petful was started as a simply company out of Jesse Pollack's garage back in 2004 in the Bush Administration. Jesse Pollack

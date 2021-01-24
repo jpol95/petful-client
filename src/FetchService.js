@@ -1,4 +1,4 @@
-const SERVER_URL = "http://localhost:8000/api"
+const SERVER_URL = "https://agile-wildwood-39107.herokuapp.com/api"
 
 const FetchService = {
     getCat(){

@@ -5,7 +5,7 @@ import Adopt from './Adopt';
 
 function NavBarAdopt(props) {
   return <div id="navbar-adoption" className="navbar-adoption">
-        <Link class="left" to="/"> Petful </Link>
+        <Link className="left" to="/"> Petful </Link>
     </div>
 }
 

@@ -334,6 +334,11 @@ a:visited {
     font-size: 25px;
 }
 
+.name-label {
+    font-size: 30px;
+    font-family: 'Cinzel'
+}
+
 @media only screen and (max-width: 600px) {
     .adopter {
         font-size: 20px;

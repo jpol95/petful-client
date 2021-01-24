@@ -9,7 +9,7 @@ import background from '../resources/background.jpg'
 
 function Background(props) {
     return <div className="background-container">
-    <img class="background" src={background} />
+    <img alt="background" className="background" src={background} />
     </div>
   }
 export default class Home extends React.Component {
@@ -22,7 +22,7 @@ export default class Home extends React.Component {
         </header>
       <main>
         <Mission />
-        <img class="border" src={dogsil} />
+        <img alt="dog silhouette" className="border" src={dogsil} />
         <Start />
         <AdoptLinks />
       </main>
