@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.27db0520.chunk.css",
+    "main.js": "/static/js/main.19e0d7cd.chunk.js",
+    "main.js.map": "/static/js/main.19e0d7cd.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.40d8ffab.js",
+    "runtime-main.js.map": "/static/js/runtime-main.40d8ffab.js.map",
+    "static/js/2.7fc34cda.chunk.js": "/static/js/2.7fc34cda.chunk.js",
+    "static/js/2.7fc34cda.chunk.js.map": "/static/js/2.7fc34cda.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.f469b5efabacfcc791d755e6a174d7d8.js": "/precache-manifest.f469b5efabacfcc791d755e6a174d7d8.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.27db0520.chunk.css.map": "/static/css/main.27db0520.chunk.css.map",
+    "static/js/2.7fc34cda.chunk.js.LICENSE.txt": "/static/js/2.7fc34cda.chunk.js.LICENSE.txt",
+    "static/media/background.jpg": "/static/media/background.c2a90bbc.jpg",
+    "static/media/dogsil.png": "/static/media/dogsil.b607bf89.png",
+    "static/media/greenperson (2).png": "/static/media/greenperson (2).7c2c1814.png",
+    "static/media/house_icon.PNG": "/static/media/house_icon.f488e0cb.PNG",
+    "static/media/kitty.jpg": "/static/media/kitty.edf199a1.jpg",
+    "static/media/index.css": "/static/media/paw.e9bbfdcd.jpg",
+    "static/media/puppy.jpg": "/static/media/puppy.1b65c68d.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.40d8ffab.js",
+    "static/js/2.7fc34cda.chunk.js",
+    "static/css/main.27db0520.chunk.css",
+    "static/js/main.19e0d7cd.chunk.js"
+  ]
+}

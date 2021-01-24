@@ -9,14 +9,14 @@ return <div id="adopt" className="adopt">
             <h2> Meet our pets! </h2>
             <div className="petpics">
                 <Link to="/adoption-page#navbar-adoption" className="container-cat">
-                <img alt="cat image" src={kitty} />
+                <img alt="cat" src={kitty} />
                     <div className="overlay"></div>
                     <div className="o-text">
                         <div className="text">Check the cat out</div>
                     </div>
                 </Link>
                 <Link to="/adoption-page#navbar-adoption" className="container-dog">
-                    <img alt="dog image" src={puppy} />
+                    <img alt="dog" src={puppy} />
                     <div className="overlay"></div>
                     <div className="o-text">
                         <div className="text">Check the dog out</div>

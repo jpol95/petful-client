@@ -126,7 +126,7 @@ export default class Adopt extends React.Component {
             className={`container-dog ${this.state.animationCat}`}
           >
             <div className="pet-background">
-              <img alt="cat image" src={cat.imageURL} />
+              <img alt="cat" src={cat.imageURL} />
               <p className="pet-name">
                 {cat.name ? cat.name.toUpperCase() : ""}
               </p>
@@ -149,7 +149,7 @@ export default class Adopt extends React.Component {
             className={`container-dog ${this.state.animationDog}`}
           >
             <div className="pet-background">
-              <img alt="dog image" src={dog.imageURL} />
+              <img alt="dog" src={dog.imageURL} />
               <p className="pet-name">
                 {dog.name ? dog.name.toUpperCase() : ""}
               </p>
